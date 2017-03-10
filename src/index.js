@@ -51,7 +51,7 @@ function getStorageObj(client, namespace) {
         remove: function(id, cb) {
             client.hdel(namespace, [id], cb);
         },
-        all: function(cb, options) {
+        all: function(cb) {
             client.hgetall(namespace, function(err, res) {
                 if (err) {
                     return cb(err);
@@ -66,7 +66,7 @@ function getStorageObj(client, namespace) {
                     array.push(parsed);
                 }
 
-                cb(null, options && options.type === 'object' ? res : array);
+                cb(null, array);
             });
         }
     };
