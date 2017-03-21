@@ -1,6 +1,7 @@
 // copied from https://github.com/howdyai/botkit version 0.0.5, original authors: @RafaelCosman and @guillaumepotier
 
 var redis = require('redis');
+var bluebird = required('bluebird');
 
 /**
  * botkit-storage-redis - Redis driver for Botkit
@@ -14,6 +15,10 @@ module.exports = function(config) {
     config = config || {};
     config.namespace = config.namespace || 'botkit:store';
     config.methods = config.methods || [];
+
+    // Promisify Redis API
+    bluebird.promisifyAll(redis.RedisClient.prototype);
+    bluebird.promisifyAll(redis.Multi.prototype);
 
     var storage = {},
         client = redis.createClient(config), // could pass specific redis config here

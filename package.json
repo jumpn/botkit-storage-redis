@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/howdyai/botkit-storage-redis#readme",
   "dependencies": {
-    "redis": "^2.4.2"
+    "redis": "2.7.1",
+    "bluebird": "3.5.0"
   },
   "devDependencies": {
     "istanbul": "^0.4.1",
