@@ -29,6 +29,9 @@ module.exports = function(config) {
         storage[methods[i]] = getStorageObj(client, config.namespace + ':' + methods[i]);
     }
 
+    // Expose Redis client
+    storage.client = client;
+
     return storage;
 };
 
