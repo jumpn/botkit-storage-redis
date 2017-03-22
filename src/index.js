@@ -1,7 +1,7 @@
 // copied from https://github.com/howdyai/botkit version 0.0.5, original authors: @RafaelCosman and @guillaumepotier
 
 var redis = require('redis');
-var bluebird = required('bluebird');
+var bluebird = require('bluebird');
 
 /**
  * botkit-storage-redis - Redis driver for Botkit
