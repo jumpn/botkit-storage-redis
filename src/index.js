@@ -22,17 +22,18 @@ module.exports = function(config) {
 
     var storage = {},
         client = redis.createClient(config), // could pass specific redis config here
-        methods = ['teams', 'users', 'channels'].concat(config.methods);
+        methods = ['teams', 'users', 'channels'].concat(config.methods),
+        result = {};
 
     // Implements required API methods
     for (var i = 0; i < methods.length; i++) {
         storage[methods[i]] = getStorageObj(client, config.namespace + ':' + methods[i]);
     }
 
-    // Expose Redis client
-    storage.client = client;
-
-    return storage;
+    result.storage = storage;
+    result.client = client;
+    
+    return result; 
 };
 
 /**
